@@ -22,7 +22,7 @@ const SignUpForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (confirmPassword != password) {
+        if (confirmPassword !== password) {
             alert("passwords do not match")
         }
         try {
@@ -31,7 +31,7 @@ const SignUpForm = () => {
             await createUserDocumentFromAuth(user, { displayName })
             resetFormFields()
         } catch (err) {
-            if (err.code == 'auth/email-already-in-use') {
+            if (err.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use')
             }
             else {
@@ -48,7 +48,7 @@ const SignUpForm = () => {
 
     return (
         <div className="sign-up-container">
-            <h2>Don't Have An Account?</h2>
+            <h2>Don't have an account?</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput
